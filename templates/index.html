@@ -9,6 +9,8 @@
 
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
+    <link rel="shortcut icon" href="/static/favicon.ico">
+
 
 </head>
 
@@ -20,19 +22,22 @@
         </div>
 
         <div class="jumbotron" style="text-align: left;">
-              <form>
-                <div class="form-group">
+              <form method="post" action="/dashboard/">
+
                     <label for="usr">UserName:</label>
-                    <input type="text" class="form-control" id="usr">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd">
-                </div>
+                    <input type="text" class="form-control" id="usr" name="usr">
+                    <br>
+                     <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" name="pwd">
+                  <br>
+              {% if err %}
+                  <h5 style="color:red"><b>{{err}}</b></h5>
+              {% endif %}
 
-                 <button type="button" class="btn btn-primary btn-md">Submit</button>
+                    <br>
+                 <button type="submit" class="btn btn-primary btn-md">Submit</button>
 
-            </form>
+              </form>
         </div>
 
 

@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script>
+    $(document).ready(function(){
+            $(".glyphicon-plus").click(function(){
+                 $.ajax({
+                    type : "POST",
+                    url : "/addApp/"+this.id,
+                    data: JSON.stringify(null),
+                    contentType: 'application/json;charset=UTF-8'
+                 });
+                 $(".div"+this.id).toggle("slow");
+            });
+
+
+         });
+    </script>
+
 </head>
 <body>
-$END$
+
+    <h4>Add a template from the avail list please Thank You.</h4>
+    <hr>
+    {% for a in apps %}
+
+            <div class="col-md-4 apps div{{a[0]}}" style="background-color:{{a[2]}}; ">
+                <div class="row">
+                <em><div class="col-md-10"><em><h4>{{a[0]}}</h4></div>
+                <div class="col-md-2"><em><h4><a href="#"><span class="glyphicon glyphicon-plus icon" aria-hidden="true" id="{{a[0]}}"></span></a></h4></div>
+                <h3>{{a[1]}}</h3></em>
+                </div>
+            </div>
+    {% endfor %}
 </body>
 </html>

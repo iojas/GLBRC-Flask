@@ -1,10 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Dashboard</title>
+
+
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $("#cont").load('/allapps/');
+
+            $("#dash").click(function(){
+                $("#cont").load('/allapps/')
+            });
+
+            $("#addapp").click(function(){
+                $("#cont").load('/shome')
+            });
+         });
+    </script>
+
+    <style>
+        .apps{
+            height:200px;
+            width:200px;
+            border-radius:5px;
+            color:black;
+        }
+        .def{
+            height:200px;
+            width:200px;
+            border-radius:5px;
+
+            border-style: solid;
+        }
+        .inn{
+
+            padding-top: 25%;
+            text-align: center;
+        }
+        .icon{
+            color:black;
+        }
+    </style>
+
+
 </head>
+
 <body>
-$END$
+    {% if user %}
+    <div class="container">
+        <div id="div1" style="width:80px;height:80px;display:none;background-color:red;"></div><br>
+        <div class="row">
+            <div class="col-lg-8"><h2>Welcome to dashboard {{user}}</h2></div>
+            <div class="col-lg-4"><a href="/logout"><button type="button" class="btn btn-danger" id="logout">LogOut</button></a></div>
+        </div>
+        <hr>
+        {% if err %}
+            <h5> Something went wrong please try again. </h5>
+        {% endif %}
+        <div class="row">
+            <div class="col-lg-6"><h4><a href="#" id="dash">DashBoardHome</a></h4></div>
+            <div class="col-lg-6"><h4><a href="#" id="addapp">Add App</a></h4></div>
+        </div>
+        <div id="cont">
+
+        </div>
+
+    </div>
+    {% else %}
+        <h1>Please Log In</h1>
+    {% endif %}
 </body>
+
 </html>
